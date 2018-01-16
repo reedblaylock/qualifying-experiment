@@ -1,0 +1,9 @@
+function runBreak(state)
+
+text = ['Time for a break.\n' ...
+		'Please take a minute to stretch and get some water.\n' ...
+		'When you are ready to keep going with the experiment, press the Space Bar.' ...
+		];
+showInstructions(state, text);
+
+end
