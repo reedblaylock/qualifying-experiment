@@ -2,7 +2,7 @@
 % Reed Blaylock, 2017
 
 % This experiment depends on
-% - Psychtoolbox 3 (http://psychtoolbox.org/)
+% - Psychtoolbox 3.0.14 (http://psychtoolbox.org/)
 % - MIDI Toolbox 1.1 (https://github.com/miditoolbox/1.1)
 
 %% TODO: Get verification that you're doing the right voice part changes --GET A PROFESSIONAL TO TELL YOU WHAT NOTES
