@@ -25,7 +25,6 @@ playAudio(state);
 % Wait until audio is done playing + 1 second, then continue
 midiDuration = getMidiDuration(nmatMetronome);
 WaitSecs(midiDuration + 1);
-% TODO: Stop audio
 
 %% Play the melody
 % Get audio
@@ -53,11 +52,42 @@ playAudio(state);
 midiDuration = getMidiDuration(nmatMelody);
 WaitSecs(midiDuration + 1);
 
-% TODO: stop audio
+[snd, nmat] = getMelodyWithMetronome(state, blockName);
 
-%% Play the melody with metronome
+% %% Play the melody
+% % Generate next midi grid
+% nmat = generateMidiGrid(state, state.blocks.(blockName).melody);
+% nmatMelody = nmat;
+% 
+% % Buffer the sound
+% prepareAudio(state, nmat);
+% 
+% text = 'Next, listen to the melody.\n';
+% if ~(blockOrder(1) == iBlockName) % This isn't your first time hearing a melody
+% 	text = [text ...
+% 			'It may be different from melodies you have already heard in this experiment.\n' ...
+% 			];
+% end
+% text = [text ...
+% 		'Press the Space Bar to listen.' ...
+% 		];
+% showInstructions(state, text);
+% 
+% % Play the sound
+% playAudio(state);
+% 
+% % Click to continue
+% midiDuration = getMidiDuration(nmat);
+% WaitSecs(midiDuration + 1);
+% % KbStrokeWait;
+
+
+
 % Get audio
-[snd, nmatMelodyWithMetronome] = getMelodyWithMetronome(state, blockName);
+filename = state.blocks.(blockName).melody.wav;
+filename = [filename(1:end-4) '_withmetronome_' state.voiceType filename(end-3:end)];
+[snd, ~] = audioread(filename);
+nmatMetronomeAndMelody = concatenateMetronomeAndMelody(nmatMetronome, nmatMelody);
 
 % Prepare audio
 PsychPortAudio('FillBuffer', state.pahandle, [snd; snd]);
@@ -78,8 +108,29 @@ showInstructions(state, text);
 playAudio(state);
 
 % Wait until audio is done playing + 1 second, then continue
-midiDuration = getMidiDuration(nmatMelodyWithMetronome);
+midiDuration = getMidiDuration(nmatMetronomeAndMelody);
 WaitSecs(midiDuration + 1);
-% TODO: stop audio
+
+
+
+% %% Play the metronome and melody together
+% % Generate next midi grid
+% nmat = concatenateMetronomeAndMelody(nmatMetronome, nmatMelody);
+% 
+% % Buffer the sound
+% prepareAudio(state, nmat);
+% 
+% text = ['Now, listen to the metronome and melody together.\n' ...
+% 		'Press the Space Bar to listen.' ...
+% 		];
+% showInstructions(state, text);
+% 
+% % Play the sound
+% playAudio(state);
+% 
+% % Click to continue
+% midiDuration = getMidiDuration(nmat);
+% WaitSecs(midiDuration + 1);
+% % KbStrokeWait;
 
 end

@@ -1,10 +1,21 @@
-function nmat = getMetronome(state, filename)
+% function nmat = getMetronome(state, filename)
+% 
+% nmat = generateMidiGrid(state, filename);
+% 
+% % The function below concatenates something to the end of a metronome. In this
+% % case, we're concatenating the metronome to itself to double it (take it from 2
+% % bars to 4).
+% nmat = concatenateMetronomeAndMelody(nmat, nmat);
+% 
+% end
 
-nmat = generateMidiGrid(state, filename);
+function [snd, nmat] = getMetronome(state, blockName)
 
-% The function below concatenates something to the end of a metronome. In this
-% case, we're concatenating the metronome to itself to double it (take it from 2
-% bars to 4).
-nmat = concatenateMetronomeAndMelody(nmat, nmat);
+filename = state.blocks.(blockName).metronome.wav;
+filename = [filename(1:end-4) '_' state.voiceType filename(end-3:end)];
+[snd, ~] = audioread(filename);
+
+filename = state.blocks.(blockName).metronome.midi;
+nmat = getMidiGrid(state, filename);
 
 end
