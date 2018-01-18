@@ -20,6 +20,7 @@ for iPlayCounter = 1:3
 	playAudio(state);
 
 	WaitSecs(getMidiDuration(nmat));
+	PsychPortAudio('Stop', state.pahandle);
 	KbStrokeWait;
 	% TODO: stop audio
 end

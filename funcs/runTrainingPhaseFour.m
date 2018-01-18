@@ -31,7 +31,7 @@ for iTrainingWord = 1:nTrainingWords
 	% Start audio playback
 	playAudio(state);
 	WaitSecs(metronomeDuration);
-	% TODO: Stop audio
+	PsychPortAudio('Stop', state.pahandle);
 
 	KbStrokeWait;
 end

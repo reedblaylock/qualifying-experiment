@@ -47,6 +47,7 @@ for iTrainingWord = 1:nTrainingWords
 	
 	showStaticSentence(state, targetWord, nmatMelody, sentenceFrame, wordTimes);
 
+	PsychPortAudio('Stop', state.pahandle);
 	KbStrokeWait;
 	% TODO: Stop audio
 	
@@ -72,6 +73,7 @@ for iTrainingWord = 1:nTrainingWords
 	
 	showStaticSentence(state, targetWord, nmatMelody, sentenceFrame, wordTimes);
 
+	PsychPortAudio('Stop', state.pahandle);
 	KbStrokeWait;
 end
 

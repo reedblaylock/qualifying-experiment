@@ -24,8 +24,9 @@ playAudio(state);
 
 % Wait until audio is done playing + 1 second, then continue
 midiDuration = getMidiDuration(nmatMetronome);
-WaitSecs(midiDuration + 1);
-% TODO: Stop audio
+WaitSecs(midiDuration);
+PsychPortAudio('Stop', state.pahandle);
+WaitSecs(1);
 
 %% Play the melody
 % Get audio
@@ -51,9 +52,9 @@ playAudio(state);
 
 % Wait until audio is done playing + 1 second, then continue
 midiDuration = getMidiDuration(nmatMelody);
-WaitSecs(midiDuration + 1);
-
-% TODO: stop audio
+WaitSecs(midiDuration);
+PsychPortAudio('Stop', state.pahandle);
+WaitSecs(1);
 
 %% Play the melody with metronome
 % Get audio
@@ -79,7 +80,8 @@ playAudio(state);
 
 % Wait until audio is done playing + 1 second, then continue
 midiDuration = getMidiDuration(nmatMelodyWithMetronome);
-WaitSecs(midiDuration + 1);
-% TODO: stop audio
+WaitSecs(midiDuration);
+PsychPortAudio('Stop', state.pahandle);
+WaitSecs(1);
 
 end
