@@ -15,7 +15,7 @@ showInstructions(state, text);
 % prepareAudio(state, nmatMetronome);
 % 
 % % Calculate the onset landmark, in milliseconds, of each note and text change
-nmatMelody = generateMidiGrid(state, state.blocks.(blockName).midi);
+nmatMelody = generateMidiGrid(state, state.blocks.(blockName).melody);
 wordTimes = getWordTimes(state, blockName, nmatMelody);
 % 
 % % bpmeasure = state.blocks.(blockName).beatsPerMeasure;

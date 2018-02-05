@@ -80,20 +80,28 @@ Screen('BlendFunction', state.win, 'GL_SRC_ALPHA', 'GL_ONE_MINUS_SRC_ALPHA');
 state.blockNames = {'A3', 'A4', 'B3', 'B4'};
 % state.blockNames = {'A3'};
 
-state.blocks.A3.midi = 'A3.mid';
-state.blocks.A3.metronome = 'metronome34.mid';
+state.blocks.A3.melody.wav = ['wav' filesep 'A3.wav'];
+state.blocks.A3.melody.midi = ['midi' filesep 'A3.mid'];
+state.blocks.A3.metronome.wav = ['wav' filesep 'metronome34.wav'];
+state.blocks.A3.metronome.midi = ['midi' filesep 'metronome34.mid'];
 state.blocks.A3.beatsPerMeasure = 3;
 
-state.blocks.A4.midi = 'A4.mid';
-state.blocks.A4.metronome = 'metronome44.mid';
+state.blocks.A4.melody.wav = ['wav' filesep 'A4.wav'];
+state.blocks.A4.melody.midi = ['midi' filesep 'A4.mid'];
+state.blocks.A4.metronome.wav = ['wav' filesep 'metronome44.wav'];
+state.blocks.A4.metronome.midi = ['midi' filesep 'metronome44.mid'];
 state.blocks.A4.beatsPerMeasure = 4;
 
-state.blocks.B3.midi = 'B3.mid';
-state.blocks.B3.metronome = 'metronome34.mid';
+state.blocks.B3.melody.wav = ['wav' filesep 'B3.wav'];
+state.blocks.B3.melody.midi = ['midi' filesep 'B3.mid'];
+state.blocks.B3.metronome.wav = ['wav' filesep 'metronome34.wav'];
+state.blocks.B3.metronome.midi = ['midi' filesep 'metronome34.mid'];
 state.blocks.B3.beatsPerMeasure = 3;
 
-state.blocks.B4.midi = 'B4.mid';
-state.blocks.B4.metronome = 'metronome44.mid';
+state.blocks.B4.melody.wav = ['wav' filesep 'B4.wav'];
+state.blocks.B4.melody.midi = ['midi' filesep 'B4.mid'];
+state.blocks.B4.metronome.wav = ['wav' filesep 'metronome44.wav'];
+state.blocks.B4.metronome.midi = ['midi' filesep 'metronome44.mid'];
 state.blocks.B4.beatsPerMeasure = 4;
 
 state.blockOrders.order1 = [1 2 3 4];

@@ -1,13 +1,9 @@
 function runTrainingPhaseTwo(state, blockName)
 % Hear a melody (x3)
-% nmatMetronome = generateMidiGrid(state, state.blocks.(blockName).metronome);
-nmatMetronome = getMetronome(state, state.blocks.(blockName).metronome);
-nmatMelody = generateMidiGrid(state, state.blocks.(blockName).midi);
-nmat = concatenateMetronomeAndMelody(nmatMetronome, nmatMelody);
+[snd, nmat] = getMelodyWithMetronome(state, blockName);
 
-% nmat = generateMidiGrid(state, state.blocks.(blockName).midi);
-
-prepareAudio(state, nmat);
+% Prepare audio
+PsychPortAudio('FillBuffer', state.pahandle, [snd; snd]);
 
 % Instructions
 text = ['Listen to the melody 3 times.\n' ...
@@ -24,7 +20,9 @@ for iPlayCounter = 1:3
 	playAudio(state);
 
 	WaitSecs(getMidiDuration(nmat));
+	PsychPortAudio('Stop', state.pahandle);
 	KbStrokeWait;
+	% TODO: stop audio
 end
 	
 end

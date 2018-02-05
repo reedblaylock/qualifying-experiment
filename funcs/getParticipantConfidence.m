@@ -5,8 +5,8 @@ function participantConfidence = getParticipantConfidence(state)
 applyDefaultTextStyles(state.win);
 
 text = ['Would you like to go through the training again?\n' ...
-		'If you believe you have learned the melody and how to match it to words, press the "Y" key.\n' ...
-		'Otherwise, if you would like to go through the training again, press the "N" key.\n' ...
+		'If you believe you have learned the melody and how to match it to words, press the "N" key.\n' ...
+		'Otherwise, if you would like to go through the training again, press the "Y" key.\n' ...
 		];
 DrawFormattedText(state.win, text, 50, 'center', [], [], [], [], 2);
 
@@ -30,7 +30,7 @@ while ~answerGiven
 	
 	if ((yWasPressed || nWasPressed) && ~(yWasPressed && nWasPressed))
 		answerGiven = 1;
-		if yWasPressed
+		if nWasPressed
 			participantConfidence = 1;
 		else
 			participantConfidence = 0;
