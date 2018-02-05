@@ -29,7 +29,7 @@ state.waitForDeviceStart = 1;
 % (4) Requested frequency in samples per second
 % (5) 2 = stereo putput
 state.pahandle = PsychPortAudio('Open', [], 1, 1, state.freq, state.nrchannels);
-state.pahandleInput = PsychPortAudio('Open', [], 2, 0, state.freq, state.nrchannelsInput);
+% state.pahandleInput = PsychPortAudio('Open', [], 2, 0, state.freq, state.nrchannelsInput);
 
 % Set the volume to half for this demo
 PsychPortAudio('Volume', state.pahandle, 0.5);
@@ -37,7 +37,7 @@ PsychPortAudio('Volume', state.pahandle, 0.5);
 %% Screen settings
 
 % TODO: Development only: don't worry about perfect frame synchronization
-Screen('Preference','SkipSyncTests', 1);
+% Screen('Preference','SkipSyncTests', 1);
 
 % Here we call some default settings for setting up Psychtoolbox
 PsychDefaultSetup(2);

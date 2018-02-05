@@ -31,6 +31,8 @@ for iRepetition = 1:state.nTargetRepetitions
 	
 	for iTargetWord = 1:nTargetWords
 		targetWord = state.targetWords{targetOrder(iTargetWord)};
+        
+        saveTrialDetails(state, blockName, iRepetition, iTargetWord, 'singing');
 
 		showStaticSentence(state, targetWord, nmatMelody, sentenceFrame, wordTimes);
 		

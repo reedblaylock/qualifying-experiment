@@ -3,12 +3,16 @@ function recordCrash(state)
 % CD into participants folder if you haven't already
 thisDir = regexp(pwd, filesep, 'split');
 thisDir = thisDir(end);
-if ~strcmp(thisDir, state.participantsFolder)
-	cd(state.participantsFolder);
+if ~strcmp(thisDir, 'participants')
+	cd('participants');
 end
 
 % CD into the participant's folder
-cd(state.participantId);
+if isfield(state, 'participantId')
+    cd(state.participantId);
+else
+    return;
+end
 
 % Write the participant ID, voice type, and block order to a file
 fid = fopen([state.participantId '_info.txt'], 'a');
@@ -19,7 +23,7 @@ fclose(fid);
 cd('..');
 
 % CD out of the participant folder
-if ~strcmp(thisDir, state.participantsFolder)
+if ~strcmp(thisDir, 'participants')
 	cd('..');
 end
 
