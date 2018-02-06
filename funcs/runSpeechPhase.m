@@ -36,7 +36,7 @@ for iRepetition = 1:state.nTargetRepetitions
 	for iTargetWord = 1:nTargetWords
 		targetWord = state.targetWords{targetOrder(iTargetWord)};
         
-        saveTrialDetails(state, blockName, iRepetition, iTargetWord, 'speech')
+        saveTrialDetails(state, blockName, iRepetition, targetWord, 'speech')
 
 		showStaticSentence(state, targetWord, [], sentenceFrame, wordTimes);
 % 		[VBLTimestamp, StimulusOnsetTime, FlipTimestamp] = showStaticSentence(state, targetWord, nmatMelody, sentenceFrame, wordTimes);
