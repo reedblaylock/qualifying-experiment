@@ -26,7 +26,7 @@ nVoiceType = 0;
 for iDir = 1:numel(all_dir)
 	dirName = all_dir(iDir).name;
 	cd(dirName);
-	outputVoiceType = getHighLow([dirname '_info.txt']);
+	outputVoiceType = getHighLow([dirName '_info.txt']);
 	if strcmp(voiceType, outputVoiceType)
 		nVoiceType = nVoiceType + 1;
 	end

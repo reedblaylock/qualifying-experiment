@@ -1,6 +1,8 @@
 function runTrainingPhaseThree(state, blockName)
+nNotes = blockName(end);
 % Instructions
 text = ['In the next examples, the melody will be matched to words.\n' ...
+		'Underlined words mark the beginning of groups of ' nNotes ' notes, just like the metronome.\n' ...
 		'Learn how to match every word to a note by listening and watching.\n' ...
 		'When the melody has finished playing, press the Space Bar to watch again and sing along.\n' ...
 		'Press the Space Bar to start.' ...
@@ -56,6 +58,7 @@ for iTrainingWord = 1:nTrainingWords
 	PsychPortAudio('FillBuffer', state.pahandle, [sndMetronome; sndMetronome]);
 	
 	text = ['Now you try.\n' ...
+			'Remember that the underlined words mark the beginning of groups of ' nNotes ' notes.\n' ...
 			'Press the Space Bar to start.' ...
 			];
 	showInstructions(state, text);
@@ -65,8 +68,7 @@ for iTrainingWord = 1:nTrainingWords
 	% Start audio playback
 	playAudio(state);
 	WaitSecs(metronomeDuration);
-	% TODO: stop audio
-
+	
 	for iNote = 1:size(wordTimes, 1)
 		showSentence(state, targetWord, iNote, nmatMelody, sentenceFrame, wordTimes);
 	end

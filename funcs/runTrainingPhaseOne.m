@@ -2,6 +2,11 @@ function runTrainingPhaseOne(state, blockName, blockOrder)
 %% Play the metronome
 % Get audio
 [snd, nmatMetronome] = getMetronome(state, blockName);
+% nmatTest = generateMidiGrid(state, state.blocks.(blockName).metronome.midi);
+% sndTest = nmat2snd(nmatTest, state.midiType, state.midiSamplingRate);
+% 
+% sca;
+% keyboard;
 
 % Prepare audio
 PsychPortAudio('FillBuffer', state.pahandle, [snd; snd]);
@@ -14,6 +19,10 @@ if ~(blockOrder(1) == iBlockName) % This isn't your first time hearing a metrono
 			'It may be different from metronomes you have already heard in this experiment.\n' ...
 			];
 end
+nNotes = blockName(end);
+text = [text ...
+		'This metronome is made of two groups of ' nNotes ' notes.\n' ...
+		];
 text = [text ...
 		'Press the Space Bar to listen.' ...
 		];

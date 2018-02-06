@@ -13,7 +13,7 @@ cd(state.participantId);
 % Write the participant ID, voice type, and block order to a file
 fid = fopen([state.participantId '_info.txt'], 'a');
 fprintf(fid, '%s\n', ['Training iterations: ' num2str(nTrainingIterations)]);
-fprintf(fid, '%s\n', ['Finished at ' datestr(datetime)]);
+fprintf(fid, '%s\n', ['Finished at ' datestr(now)]);
 fclose(fid);
 
 % CD out of this participant's folder

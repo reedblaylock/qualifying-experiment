@@ -37,7 +37,7 @@ PsychPortAudio('Volume', state.pahandle, 0.5);
 %% Screen settings
 
 % TODO: Development only: don't worry about perfect frame synchronization
-% Screen('Preference','SkipSyncTests', 1);
+Screen('Preference','SkipSyncTests', 1);
 
 % Here we call some default settings for setting up Psychtoolbox
 PsychDefaultSetup(2);

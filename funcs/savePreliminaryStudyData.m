@@ -22,7 +22,7 @@ fprintf(fid, '%s\n', state.participantId);
 fprintf(fid, '%s\n', state.researcherId);
 fprintf(fid, '%s\n', state.voiceType);
 fprintf(fid, '%s\n', blockOrderName);
-fprintf(fid, '%s\n', ['Initiated at ' datestr(datetime)]);
+fprintf(fid, '%s\n', ['Initiated at ' datestr(now)]);
 fclose(fid);
 
 % CD out of this participant's folder
