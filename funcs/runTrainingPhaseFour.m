@@ -13,7 +13,8 @@ showInstructions(state, text);
 metronomeDuration = getMetronomeDuration(nmatMetronome);
 
 % Prepare audio
-PsychPortAudio('FillBuffer', state.pahandle, [snd; snd]);
+% PsychPortAudio('FillBuffer', state.pahandle, [snd; snd]);
+state = prepareAudio(state, snd);
 
 % Calculate the onset landmark, in milliseconds, of each note and text change
 wordTimes = getWordTimes(state, blockName, nmatMelody);
@@ -33,7 +34,7 @@ for iTrainingWord = 1:nTrainingWords
 	% Start audio playback
 	playAudio(state);
 	WaitSecs(metronomeDuration);
-	PsychPortAudio('Stop', state.pahandle);
+% 	PsychPortAudio('Stop', state.pahandle);
 
 	KbStrokeWait;
 end

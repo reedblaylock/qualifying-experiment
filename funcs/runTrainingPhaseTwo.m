@@ -3,7 +3,8 @@ function runTrainingPhaseTwo(state, blockName)
 [snd, nmat] = getMelodyWithMetronome(state, blockName);
 
 % Prepare audio
-PsychPortAudio('FillBuffer', state.pahandle, [snd; snd]);
+% PsychPortAudio('FillBuffer', state.pahandle, [snd; snd]);
+prepareAudio(state, snd);
 
 % Instructions
 text = ['Listen to the melody 3 times.\n' ...
@@ -20,7 +21,7 @@ for iPlayCounter = 1:3
 	playAudio(state);
 
 	WaitSecs(getMidiDuration(nmat));
-	PsychPortAudio('Stop', state.pahandle);
+% 	PsychPortAudio('Stop', state.pahandle);
 	KbStrokeWait;
 	% TODO: stop audio
 end

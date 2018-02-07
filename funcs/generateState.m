@@ -28,11 +28,11 @@ state.waitForDeviceStart = 1;
 % (3) 1 = default level of latency
 % (4) Requested frequency in samples per second
 % (5) 2 = stereo putput
-state.pahandle = PsychPortAudio('Open', [], 1, 1, state.freq, state.nrchannels);
+% state.pahandle = PsychPortAudio('Open', [], 1, 1, state.freq, state.nrchannels);
 % state.pahandleInput = PsychPortAudio('Open', [], 2, 0, state.freq, state.nrchannelsInput);
 
 % Set the volume to half for this demo
-PsychPortAudio('Volume', state.pahandle, 0.5);
+% PsychPortAudio('Volume', state.pahandle, 0.5);
 
 %% Screen settings
 

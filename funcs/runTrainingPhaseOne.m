@@ -9,7 +9,8 @@ function runTrainingPhaseOne(state, blockName, blockOrder)
 % keyboard;
 
 % Prepare audio
-PsychPortAudio('FillBuffer', state.pahandle, [snd; snd]);
+% PsychPortAudio('FillBuffer', state.pahandle, [snd; snd]);
+state = prepareAudio(state, snd);
 
 % Show instructions
 text = 'First, listen to the metronome.\n';
@@ -34,7 +35,7 @@ playAudio(state);
 % Wait until audio is done playing + 1 second, then continue
 midiDuration = getMidiDuration(nmatMetronome);
 WaitSecs(midiDuration);
-PsychPortAudio('Stop', state.pahandle);
+% PsychPortAudio('Stop', state.pahandle);
 WaitSecs(1);
 
 %% Play the melody
@@ -42,7 +43,8 @@ WaitSecs(1);
 [snd, nmatMelody] = getMelody(state, blockName);
 
 % Prepare audio
-PsychPortAudio('FillBuffer', state.pahandle, [snd; snd]);
+% PsychPortAudio('FillBuffer', state.pahandle, [snd; snd]);
+state = prepareAudio(state, snd);
 
 % Show instructions
 text = 'Next, listen to the melody.\n';
@@ -62,7 +64,7 @@ playAudio(state);
 % Wait until audio is done playing + 1 second, then continue
 midiDuration = getMidiDuration(nmatMelody);
 WaitSecs(midiDuration);
-PsychPortAudio('Stop', state.pahandle);
+% PsychPortAudio('Stop', state.pahandle);
 WaitSecs(1);
 
 %% Play the melody with metronome
@@ -70,7 +72,8 @@ WaitSecs(1);
 [snd, nmatMelodyWithMetronome] = getMelodyWithMetronome(state, blockName);
 
 % Prepare audio
-PsychPortAudio('FillBuffer', state.pahandle, [snd; snd]);
+% PsychPortAudio('FillBuffer', state.pahandle, [snd; snd]);
+prepareAudio(state, snd);
 
 % Show instructions
 text = 'Next, listen to the melody.\n';
@@ -90,7 +93,7 @@ playAudio(state);
 % Wait until audio is done playing + 1 second, then continue
 midiDuration = getMidiDuration(nmatMelodyWithMetronome);
 WaitSecs(midiDuration);
-PsychPortAudio('Stop', state.pahandle);
+% PsychPortAudio('Stop', state.pahandle);
 WaitSecs(1);
 
 end

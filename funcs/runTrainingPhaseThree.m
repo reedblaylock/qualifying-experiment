@@ -30,7 +30,8 @@ for iTrainingWord = 1:nTrainingWords
 	targetWord = state.trainingWords{trainingOrder(iTrainingWord)};
 	
 	% Prepare audio
-	PsychPortAudio('FillBuffer', state.pahandle, [sndMelodyWithMetronome; sndMelodyWithMetronome]);
+% 	PsychPortAudio('FillBuffer', state.pahandle, [sndMelodyWithMetronome; sndMelodyWithMetronome]);
+	prepareAudio(state, sndMelodyWithMetronome);
 	
 	text = ['Remember: watch and listen first, then practice.\n' ...
 			'Press the Space Bar to start.' ...
@@ -49,13 +50,14 @@ for iTrainingWord = 1:nTrainingWords
 	
 	showStaticSentence(state, targetWord, nmatMelody, sentenceFrame, wordTimes);
 
-	PsychPortAudio('Stop', state.pahandle);
+% 	PsychPortAudio('Stop', state.pahandle);
 	KbStrokeWait;
 	% TODO: Stop audio
 	
 	% Sing...
 	% Prepare audio
-	PsychPortAudio('FillBuffer', state.pahandle, [sndMetronome; sndMetronome]);
+% 	PsychPortAudio('FillBuffer', state.pahandle, [sndMetronome; sndMetronome]);
+	prepareAudio(state, sndMetronome);
 	
 	text = ['Now you try.\n' ...
 			'Remember that the underlined words mark the beginning of groups of ' nNotes ' notes.\n' ...
@@ -75,7 +77,7 @@ for iTrainingWord = 1:nTrainingWords
 	
 	showStaticSentence(state, targetWord, nmatMelody, sentenceFrame, wordTimes);
 
-	PsychPortAudio('Stop', state.pahandle);
+% 	PsychPortAudio('Stop', state.pahandle);
 	KbStrokeWait;
 end
 

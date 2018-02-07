@@ -113,7 +113,7 @@ end
 
 %% Cleanup
 % Close the audio device
-PsychPortAudio('Close', state.pahandle);
+% PsychPortAudio('Close', state.pahandle);
 % PsychPortAudio('Close', state.pahandleInput);
 
 % Note that the experiment was finished
