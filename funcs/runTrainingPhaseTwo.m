@@ -4,7 +4,7 @@ function runTrainingPhaseTwo(state, blockName)
 
 % Prepare audio
 % PsychPortAudio('FillBuffer', state.pahandle, [snd; snd]);
-prepareAudio(state, snd);
+state = prepareAudio(state, snd);
 
 % Instructions
 text = ['Listen to the melody 3 times.\n' ...

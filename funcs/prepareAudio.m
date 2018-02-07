@@ -10,7 +10,7 @@
 % 
 % end
 
-function prepareAudio(state, snd)
+function state = prepareAudio(state, snd)
 
 state.snd = snd;
 

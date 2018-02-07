@@ -73,7 +73,7 @@ WaitSecs(1);
 
 % Prepare audio
 % PsychPortAudio('FillBuffer', state.pahandle, [snd; snd]);
-prepareAudio(state, snd);
+state = prepareAudio(state, snd);
 
 % Show instructions
 text = 'Next, listen to the melody.\n';
