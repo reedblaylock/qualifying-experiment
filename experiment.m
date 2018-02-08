@@ -119,15 +119,15 @@ end
 % Note that the experiment was finished
 noteStudyFinished(state, nTrainingIterations);
 
-% Keep track of how many of each voice type have been recorded
-switch voiceType
-	case 'high'
-		nHigh = nHigh + 1;
-	case 'low'
-		nLow = nLow + 1;
-	otherwise
-		error('Invalid voice type selected');
-end
+% % Keep track of how many of each voice type have been recorded
+% switch voiceType
+% 	case 'high'
+% 		nHigh = nHigh + 1;
+% 	case 'low'
+% 		nLow = nLow + 1;
+% 	otherwise
+% 		error('Invalid voice type selected');
+% end
 
 % save('nHigh.mat', 'nHigh');
 % save('nLow.mat', 'nLow');
