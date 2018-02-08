@@ -11,7 +11,7 @@ end
 cd(state.participantId);
 
 fid = fopen([state.participantId '_timestamps.txt'], 'a');
-fprintf(fid, '%s\t%s\n', label, timestamp);
+fprintf(fid, '%s\t%s\n\r', label, timestamp);
 fclose(fid);
 
 % CD out of this participant's folder

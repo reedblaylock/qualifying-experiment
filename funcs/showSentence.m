@@ -45,6 +45,6 @@ end
 
 % Flip to the screen
 Screen('Flip', win);
-WaitSecs(sentenceFrameWordTimes(iNote, 3));
+WaitSecs(sentenceFrameWordTimes(iNote, 3)-state.avcorrection);
 
 end

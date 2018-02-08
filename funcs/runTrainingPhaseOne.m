@@ -25,7 +25,8 @@ text = [text ...
 		'This metronome is made of two groups of ' nNotes ' notes.\n' ...
 		];
 text = [text ...
-		'Press the Space Bar to listen.' ...
+		'Press the Space Bar to listen.\n' ...
+        'When you are done listening, press the Space Bar to continue.' ...
 		];
 showInstructions(state, text);
 
@@ -36,7 +37,8 @@ playAudio(state);
 midiDuration = getMidiDuration(nmatMetronome);
 WaitSecs(midiDuration);
 % PsychPortAudio('Stop', state.pahandle);
-WaitSecs(1);
+% WaitSecs(1);
+KbStrokeWait;
 
 %% Play the melody
 % Get audio
@@ -54,7 +56,8 @@ if ~(blockOrder(1) == iBlockName) % This isn't your first time hearing a melody
 			];
 end
 text = [text ...
-		'Press the Space Bar to listen.' ...
+		'Press the Space Bar to listen.\n' ...
+        'When you are done listening, press the Space Bar to continue.' ...
 		];
 showInstructions(state, text);
 
@@ -65,7 +68,8 @@ playAudio(state);
 midiDuration = getMidiDuration(nmatMelody);
 WaitSecs(midiDuration);
 % PsychPortAudio('Stop', state.pahandle);
-WaitSecs(1);
+% WaitSecs(1);
+KbStrokeWait;
 
 %% Play the melody with metronome
 % Get audio
@@ -76,14 +80,15 @@ WaitSecs(1);
 state = prepareAudio(state, snd);
 
 % Show instructions
-text = 'Next, listen to the melody.\n';
+text = 'Now, listen to the metronome and melody together.\n';
 if ~(blockOrder(1) == iBlockName) % This isn't your first time hearing a melody
 	text = [text ...
-			'It may be different from melodies you have already heard in this experiment.\n' ...
+			'Remember, they may be different from what you have already heard in this experiment.\n' ...
 			];
 end
 text = [text ...
-		'Press the Space Bar to listen.' ...
+		'Press the Space Bar to listen.\n' ...
+        'When you are done listening, press the Space Bar to continue.' ...
 		];
 showInstructions(state, text);
 
@@ -94,6 +99,7 @@ playAudio(state);
 midiDuration = getMidiDuration(nmatMelodyWithMetronome);
 WaitSecs(midiDuration);
 % PsychPortAudio('Stop', state.pahandle);
-WaitSecs(1);
+% WaitSecs(1);
+KbStrokeWait;
 
 end

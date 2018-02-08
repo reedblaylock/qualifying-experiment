@@ -11,8 +11,8 @@ end
 cd(state.participantId);
 
 timestamp = datestr(now);
-fid = fopen([state.participantId '_timestamps.txt'], 'a');
-fprintf(fid, '%s\t%s\t%s\t%s\t%s\t%s\n\r', blockName, targetWord, num2str(iRepetition), speechOrSinging, timestamp);
+fid = fopen([state.participantId '_timestamps.txt'], 'at');
+fprintf(fid, '%s\t%s\t%s\t%s\t%s\t%s\r\n', blockName, targetWord, num2str(iRepetition), speechOrSinging, timestamp);
 fclose(fid);
 
 % CD out of this participant's folder
