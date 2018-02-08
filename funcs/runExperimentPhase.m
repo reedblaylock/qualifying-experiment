@@ -48,7 +48,7 @@ for iRepetition = 1:state.nTargetRepetitions
 		
 		% Start audio playback
 		playAudio(state);
-		WaitSecs(metronomeDuration);
+		WaitSecs(metronomeDuration+3);
 % 		PsychPortAudio('Stop', state.pahandle);
 		
 % 		while ~KbCheck && ((length(recordedaudio) / s.SampleRate) < inf)
