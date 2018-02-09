@@ -10,7 +10,7 @@ end
 % CD into the participant folder
 cd(state.participantId);
 
-timestamp = datestr(now);
+timestamp = datestr(now, 'dd-mmm-yyyy HH:MM:SS.FFF');
 fid = fopen([state.participantId '_timestamps.txt'], 'at');
 fprintf(fid, '\r\n%s\t%s\t%s\t%s\t%s\t%s\r\n', blockName, targetWord, num2str(iRepetition), speechOrSinging, timestamp);
 fclose(fid);
