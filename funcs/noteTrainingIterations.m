@@ -1,4 +1,4 @@
-function noteStudyFinished(state)
+function noteTrainingIterations(state, nTrainingIterations)
 
 % CD into participants folder if you haven't already
 thisDir = regexp(pwd, filesep, 'split');
@@ -12,7 +12,7 @@ cd(state.participantId);
 
 % Write the participant ID, voice type, and block order to a file
 fid = fopen([state.participantId '_info.txt'], 'a');
-fprintf(fid, '%s\n', ['Finished at ' datestr(now)]);
+fprintf(fid, '%s\n', ['Training iterations: ' num2str(nTrainingIterations)]);
 fclose(fid);
 
 % CD out of this participant's folder

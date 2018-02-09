@@ -46,21 +46,6 @@ switch voiceType
 		error('Invalid voice type');
 end
 
-% % TODO: This is a hacky way to get at the high/low values. You should really go
-% % through each folder and count the number of highs and lows you've already
-% % recorded from the info file
-% load('nHigh.mat');
-% load('nLow.mat');
-% 
-% switch voiceType
-% 	case 'high'
-% 		nVoiceType = nHigh;
-% 	case 'low'
-% 		nVoiceType = nLow;
-% 	otherwise
-% 		error('Invalid voice type');
-% end
-
 % Choose blocking order based on number of previous participants of this
 % voiceType
 blockOrderName = ['order' num2str(mod(nVoiceType, numel(fieldnames(state.blockOrders))) + 1)];
@@ -91,7 +76,7 @@ for iBlock = 1:nBlocks
 	
 	participantHasBeenTrained = 0;
 	nTrainingIterations = 0;
-	while ~participantHasBeenTrained
+    while ~participantHasBeenTrained
 % Run training phase
 		runTrainingPhaseOne(state, blockName, blockOrder);
 		runTrainingPhaseTwo(state, blockName);
@@ -101,7 +86,9 @@ for iBlock = 1:nBlocks
 % Get input: are you comfortable with this?
 		nTrainingIterations = nTrainingIterations + 1;
 		participantHasBeenTrained = getParticipantConfidence(state);
-	end
+    end
+    
+    noteTrainingIterations(state, nTrainingIterations);
 
 % Run experiment phase
 	runExperimentPhase(state, blockName);
@@ -117,20 +104,7 @@ end
 % PsychPortAudio('Close', state.pahandleInput);
 
 % Note that the experiment was finished
-noteStudyFinished(state, nTrainingIterations);
-
-% % Keep track of how many of each voice type have been recorded
-% switch voiceType
-% 	case 'high'
-% 		nHigh = nHigh + 1;
-% 	case 'low'
-% 		nLow = nLow + 1;
-% 	otherwise
-% 		error('Invalid voice type selected');
-% end
-
-% save('nHigh.mat', 'nHigh');
-% save('nLow.mat', 'nLow');
+noteStudyFinished(state);
 
 %% Thank you screen
 text = ['Thank you for singing!\n' ...

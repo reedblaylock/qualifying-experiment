@@ -1,7 +1,7 @@
 1
 RB
-low
+high
 order1
-Initiated at 07-Feb-2018 17:28:06
+Initiated at 08-Feb-2018 09:51:51
 Training iterations: 1
-Finished at 07-Feb-2018 18:05:51
+Finished at 08-Feb-2018 10:33:04
