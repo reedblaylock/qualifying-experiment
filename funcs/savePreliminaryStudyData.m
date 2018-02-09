@@ -18,11 +18,11 @@ mkdir(state.recordingFolder);
 
 % Write the participant ID, voice type, and block order to a file
 fid = fopen([state.participantId '_info.txt'], 'w');
-fprintf(fid, '%s\n', state.participantId);
-fprintf(fid, '%s\n', state.researcherId);
-fprintf(fid, '%s\n', state.voiceType);
-fprintf(fid, '%s\n', blockOrderName);
-fprintf(fid, '%s\n', ['Initiated at ' datestr(now)]);
+fprintf(fid, '%s\r\n', state.participantId);
+fprintf(fid, '%s\r\n', state.researcherId);
+fprintf(fid, '%s\r\n', state.voiceType);
+fprintf(fid, '%s\r\n', blockOrderName);
+fprintf(fid, '%s\r\n', ['Initiated at ' datestr(now)]);
 fclose(fid);
 
 % CD out of this participant's folder
