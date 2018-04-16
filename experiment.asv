@@ -51,13 +51,12 @@ nBlocks = numel(state.blockNames);
 for iBlock = 1:nBlocks
 	blockName = state.blockNames{blockOrder(iBlock)};
 
-    runTrainingPhaseOne(state);
-    
 	participantHasBeenTrained = 0;
 	nTrainingIterations = 0;
     while ~participantHasBeenTrained
 % Run training phase
-		
+		runTrainingPhaseOne(state, blockName);
+		runTrainingPhaseTwo(state, blockName);
 		runTrainingPhaseThree(state, blockName);
 		runTrainingPhaseFour(state, blockName);
 
@@ -70,15 +69,16 @@ for iBlock = 1:nBlocks
 
 % Run experiment phase
 	runExperimentPhase(state, blockName);
+    runSpeechPhase(state, blockName);
+
+	if iBlock < nBlocks
+		runBreak(state);
+	end
 end
 
-% Give them a break
 runBreak(state);
 
-% Run both speech phases
-for iBlock = 1:nBlocks
-   runSpeechPhase(state, blockName); 
-end
+for iBlock = 1:
 
 % Note that the experiment was finished
 noteStudyFinished(state);

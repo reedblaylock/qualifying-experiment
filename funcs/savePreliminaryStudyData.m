@@ -20,7 +20,6 @@ mkdir(state.recordingFolder);
 fid = fopen([state.participantId '_info.txt'], 'w');
 fprintf(fid, '%s\r\n', state.participantId);
 fprintf(fid, '%s\r\n', state.researcherId);
-fprintf(fid, '%s\r\n', state.voiceType);
 fprintf(fid, '%s\r\n', blockOrderName);
 fprintf(fid, '%s\r\n', ['Initiated at ' datestr(now)]);
 fclose(fid);

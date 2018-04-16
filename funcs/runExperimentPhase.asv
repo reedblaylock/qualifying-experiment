@@ -1,16 +1,17 @@
 function runExperimentPhase(state, blockName)
 % Instructions
-text = ['Say the sentences on the screen, just like before.\n' ...
-        'When you have finished saying each sentence, prace the Space Bar to continue.\n' ...
+text = ['Sing the melody to the words on the screen, just like before.\n' ...
 		'Press the Space Bar to begin.' ...
 		];
 showInstructions(state, text);
 
 % Get music
 [sndMetronome] = getMetronome(state, blockName);
+[sndMelody] = getMelody(state, blockName);
 metronomeDuration = getSoundDuration(sndMetronome);
 
 % Prepare audio
+% PsychPortAudio('FillBuffer', state.pahandle, [snd; snd]);
 state = prepareAudio(state, sndMetronome);
 
 sentenceFrame = state.frame.(blockName);
@@ -34,6 +35,7 @@ for iRepetition = 1:state.nTargetRepetitions
 		WaitSecs(metronomeDuration+3);
 
 		KbStrokeWait;
+		% TODO: stop audio
 	end
 end
 

@@ -1,31 +1,24 @@
 function runTrainingPhaseFour(state, blockName)
 % Instructions
-nNotes = blockName(end);
-text = ['Now, the metronome will play, but the melody will not.\n' ...
-        'Let the end of the metronome cue the beginning of your singing, like before.\n' ...
+text = ['Now, the metronome will play at first, but stop before the words begin.\n' ...
+        'Let the end of the metronome cue the beginning of the words, like before.\n' ...
         'Press the Space Bar to continue.' ...
         ];
 showInstructions(state, text);
-text = ['Remember, the underlined words mark the beginning of groups of ' nNotes ' notes or silences, and should be emphasized.\n' ...
-        'Also, remember to sing without any flourishes or embellishments.\n' ...
+text = ['Remember, the underlined words mark the beginning of groups of 3 syllables, and should be emphasized.\n' ...
         'If you want to keep the beat on your body, you can tap your finger quietly against your leg.\n' ...
-		'Press the Space Bart to start singing.' ...
+		'Press the Space Bart to start.' ...
 		];
 showInstructions(state, text);
 
 % Get music
-[snd, nmatMetronome] = getMetronome(state, blockName);
-[~, nmatMelody] = getMelody(state, blockName);
-metronomeDuration = getMetronomeDuration(nmatMetronome);
+[sndMetronome] = getMetronome(state, blockName);
+metronomeDuration = getSoundDuration(state, sndMetronome);
 
 % Prepare audio
-% PsychPortAudio('FillBuffer', state.pahandle, [snd; snd]);
-state = prepareAudio(state, snd);
+state = prepareAudio(state, sndMetronome);
 
-% Calculate the onset landmark, in milliseconds, of each note and text change
-wordTimes = getWordTimes(state, blockName, nmatMelody);
-frameName = ['sentenceFrame', blockName(1)];
-sentenceFrame = state.(frameName);
+sentenceFrame = state.frame.(blockName);
 
 % Randomize words
 nTrainingWords = numel(state.trainingWords);
@@ -35,12 +28,11 @@ for iTrainingWord = 1:nTrainingWords
 	targetWord = state.trainingWords{trainingOrder(iTrainingWord)};
 	
 % Practice singing
-	showStaticSentence(state, targetWord, nmatMelody, sentenceFrame, wordTimes);
+	showStaticSentence(state, targetWord, sentenceFrame);
 
 	% Start audio playback
 	playAudio(state);
 	WaitSecs(metronomeDuration+3);
-% 	PsychPortAudio('Stop', state.pahandle);
 
 	KbStrokeWait;
 end

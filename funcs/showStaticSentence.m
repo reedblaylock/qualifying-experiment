@@ -1,4 +1,4 @@
-function [VBLTimestamp, StimulusOnsetTime, FlipTimestamp] = showStaticSentence(state, targetWord, nmat, sentenceFrame, wordTimes)
+function [] = showStaticSentence(state, targetWord, sentenceFrame)
 
 nx = 50;
 ny = 'center';
@@ -8,18 +8,17 @@ win = state.win;
 applyDefaultTextStyles(win);
 
 % Draw each word separately
-for iWord = 1:size(wordTimes, 1)
+targetWordSyllablesUsed = 0;
+for iWord = 1:size(sentenceFrame, 1)
 	% If the word has maximum amplitude, underline it
-	if ~isempty(nmat)
-		noteBeingDrawn = wordTimes(iWord, 1);
-		if(noteBeingDrawn > 0 && nmat(noteBeingDrawn, 5) == state.maxAmplitude)
-			applyTextStyle(win, 'underline')
-		end
+	if mod(iWord, 3) == 1
+		applyTextStyle(win, 'underline')
 	end
 
-	if iWord == 6
-		% Concatenate the target word to any following punctuation
-		word = [targetWord sentenceFrame{iWord}];
+	if isempty(regexp(sentenceFrame{iWord}))
+		% Concatenate the training word to any following
+		% punctuation
+		word = [targetWord{targetWordSyllablesUsed+1} sentenceFrame{iWord}];
 	else
 		word = sentenceFrame{iWord};
 	end
@@ -39,6 +38,6 @@ for iWord = 1:size(wordTimes, 1)
 end
 
 % Flip to the screen
-[VBLTimestamp, StimulusOnsetTime, FlipTimestamp] = Screen('Flip', win);
+Screen('Flip', win);
 
 end

@@ -9,14 +9,10 @@
 % 
 % end
 
-function [snd, nmat] = getMetronome(state, blockName)
+function [snd] = getMetronome(state)
 
-filename = state.blocks.(blockName).metronome.wav;
-filename = [filename(1:end-4) '_' state.voiceType filename(end-3:end)];
+filename = state.files.wav.metronome2;
 [snd, ~] = audioread(filename);
 snd = snd';
-
-filename = state.blocks.(blockName).metronome.midi;
-nmat = generateMidiGrid(state, filename);
 
 end

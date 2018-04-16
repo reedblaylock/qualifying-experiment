@@ -11,8 +11,10 @@ duration = getSoundDuration(state, snd);
 wordInterval = duration / nWords;
 
 wordTimes = zeros(nWords, 1);
+startTime = 0;
 for iWord = 1:nWords
-    wordTimes(iWord, :) = [wordInterval];
+    wordTimes(iWord, :) = [note startTime wordInterval];
+    startTime = startTime + wordInterval;
 end
 
 end
