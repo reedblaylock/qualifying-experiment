@@ -13,10 +13,10 @@ end
 all_files = dir;
 all_dir = all_files([all_files(:).isdir]);
 
-% Get rid of windows '.' and '..' folders
+% Get rid of folders starting with '.'
 tempNPreviousParticipants = numel(all_dir);
 for i = tempNPreviousParticipants:-1:1
-	if ( strcmp(all_dir(i).name, '.') || strcmp(all_dir(i).name, '..') )
+	if ( strcmp(all_dir(i).name(1), '.') || strcmp(all_dir(i).name, 'test') )
 		all_dir(i) = [];
 	end
 end
