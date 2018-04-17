@@ -84,9 +84,9 @@ state.blockNames = {'aligned', 'misaligned'};
 state.beatsPerMeasure = 3;
 
 state.files.wav.metronome2 = ['wav' filesep 'metronome2.wav'];
-state.files.wav.metronome8 = ['wav' filesep 'metronome8.wav']l
+state.files.wav.metronome8 = ['wav' filesep 'metronome8.wav'];
 state.files.wav.metronome10 = ['wav' filesep 'metronome10.wav'];
-state.files.midi = ['midi' filesep 'metronome.mid'];
+state.files.midi = ['midi' filesep 'metronome34.mid'];
 
 state.blockOrders.order1 = [1 2];
 state.blockOrders.order2 = [2 1];
@@ -103,9 +103,9 @@ state.targetWords = { ...
 state.nTargetRepetitions = 3;
 
 state.frame.aligned = {'See', 'you', 'in', '', '', '.', 'Have', 'a', 'good', 'ho-', 'li-', 'day.'};
-state.sentenceFrameAToNmatMap = [1, 2, 3, 4, 5, 6, 0, 7, 8, 9, 10, 11];
+% state.sentenceFrameAToNmatMap = [1, 2, 3, 4, 5, 6, 0, 7, 8, 9, 10, 11];
 state.frame.misaligned = {'See', 'you', 'there.', '', '', '', 'is', 'a', 'good', 'ho-', 'li-', 'day.'};
-state.sentenceFrameBToNmatMap = [1, 2, 3, 4, 5, 6, 7, 8, 0, 9, 10, 11];
+% state.sentenceFrameBToNmatMap = [1, 2, 3, 4, 5, 6, 7, 8, 0, 9, 10, 11];
 
 state.midiType = 'fm';
 % state.midiType = 'shepard'; % sounds weird...

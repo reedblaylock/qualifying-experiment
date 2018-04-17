@@ -77,7 +77,8 @@ runBreak(state);
 
 % Run both speech phases
 for iBlock = 1:nBlocks
-   runSpeechPhase(state, blockName); 
+    blockName = state.blockNames{blockOrder(iBlock)};
+    runSpeechPhase(state, blockName); 
 end
 
 % Note that the experiment was finished

@@ -21,10 +21,11 @@ for iWord = 1:size(sentenceFrameWordTimes, 1)
 		applyTextColor(win, red);
 	end
 
-	if isempty(regexp(sentenceFrame{iWord}))
+	if isempty(regexp(sentenceFrame{iWord}, '[a-z]', 'once'))
 		% Concatenate the training word to any following
 		% punctuation
 		word = [targetWord{targetWordSyllablesUsed+1} sentenceFrame{iWord}];
+        targetWordSyllablesUsed = targetWordSyllablesUsed + 1;
 	else
 		word = sentenceFrame{iWord};
 	end

@@ -12,7 +12,7 @@ wordInterval = duration / nWords;
 
 wordTimes = zeros(nWords, 1);
 for iWord = 1:nWords
-    wordTimes(iWord, :) = [wordInterval];
+    wordTimes(iWord, :) = wordInterval;
 end
 
 end

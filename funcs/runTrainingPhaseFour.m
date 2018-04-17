@@ -12,7 +12,7 @@ text = ['Remember, the underlined words mark the beginning of groups of 3 syllab
 showInstructions(state, text);
 
 % Get music
-[sndMetronome] = getMetronome(state, blockName);
+[sndMetronome] = getMetronome(state);
 metronomeDuration = getSoundDuration(state, sndMetronome);
 
 % Prepare audio

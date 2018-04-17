@@ -14,8 +14,8 @@ text = [
 showInstructions(state, text);
 
 % Get music
-[sndMelodyWithMetronome] = getMelodyWithMetronome(state, blockName);
-[sndMetronome] = getMetronome(state, blockName);
+[sndMelodyWithMetronome] = getMelodyWithMetronome(state);
+[sndMetronome] = getMetronome(state);
 [sndMelody] = getMelody(state);
 metronomeDuration = getSoundDuration(state, sndMetronome);
 
@@ -49,7 +49,7 @@ for iTrainingWord = 1:nTrainingWords
 	WaitSecs(metronomeDuration-state.avcorrection);
 
 	for iNote = 1:size(wordTimes, 1)
-		showSentence(state, targetWord, iNote, nmatMelody, sentenceFrame, wordTimes);
+		showSentence(state, targetWord, iNote, sentenceFrame, wordTimes);
 	end
 	
 	showStaticSentence(state, targetWord, sentenceFrame);
