@@ -9,7 +9,7 @@ applyDefaultTextStyles(win);
 
 % Draw each word separately
 targetWordSyllablesUsed = 0;
-for iWord = 1:size(sentenceFrameWordTimes, 1)
+for iWord = 1:length(sentenceFrameWordTimes)
 	% If the word has maximum amplitude, underline it
 	if mod(iWord, 3) == 1
 		applyTextStyle(win, 'underline')

@@ -6,7 +6,7 @@ text = ['Say each sentence aloud, then press the Space Bar to move to the next s
 		];
 showInstructions(state, text);
 
-sentenceFrame = state.frame(blockName);
+sentenceFrame = state.frame.(blockName);
 
 nTargetWords = numel(state.targetWords);
 targetOrder = [];

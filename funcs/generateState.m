@@ -84,6 +84,8 @@ state.blockNames = {'aligned', 'misaligned'};
 state.beatsPerMeasure = 3;
 
 state.files.wav.metronome2 = ['wav' filesep 'metronome2.wav'];
+state.files.wav.metronome4 = ['wav' filesep 'metronome4.wav'];
+state.files.wav.metronome6 = ['wav' filesep 'metronome6.wav'];
 state.files.wav.metronome8 = ['wav' filesep 'metronome8.wav'];
 state.files.wav.metronome10 = ['wav' filesep 'metronome10.wav'];
 state.files.midi = ['midi' filesep 'metronome34.mid'];

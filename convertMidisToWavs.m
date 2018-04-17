@@ -29,18 +29,21 @@ mid2wav(nmat, [outFolder 'metronome2.wav'], Fs);
 % Lengthen the midi from 2 measures to 10
 base = nmat;
 finalOnsetTime = base(end, 6);
+n = 2;
 for i = 1:4
     newAddition = base;
     newAddition(:, 1) = base(:, 1) + size(base, 1);
     newAddition(:, 6) = base(:, 6) + (finalOnsetTime + interOnsetInterval);
     nmat = [nmat; newAddition];
     base = newAddition;
+    mid2wav(nmat, [outFolder 'metronome' num2str(n*2) '.wav'], Fs);
+    n = n + 1;
 end
 
-% Save 8 measure version
-mid2wav(nmat(1:24, :), [outFolder 'metronome8.wav'], Fs);
-
-% Save 10 measure version
-mid2wav(nmat, [outFolder 'metronome10.wav'], Fs);
+% % Save 8 measure version
+% mid2wav(nmat(1:24, :), [outFolder 'metronome8.wav'], Fs);
+% 
+% % Save 10 measure version
+% mid2wav(nmat, [outFolder 'metronome10.wav'], Fs);
 
 end

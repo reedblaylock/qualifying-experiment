@@ -7,8 +7,8 @@ text = ['Say the sentences on the screen, just like before.\n' ...
 showInstructions(state, text);
 
 % Get music
-[sndMetronome] = getMetronome(state, blockName);
-metronomeDuration = getSoundDuration(sndMetronome);
+[sndMetronome] = getMetronome(state);
+metronomeDuration = getSoundDuration(state, sndMetronome);
 
 % Prepare audio
 state = prepareAudio(state, sndMetronome);

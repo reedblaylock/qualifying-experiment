@@ -4,19 +4,31 @@ function newArray = randpermNoConsecutiveAfter(oldArray, nValues)
 % {1 2}, {3 4}) as the end of the old array
 
 if isempty(oldArray)
-	newArray = randpermNoConsecutive(nValues);
+    if nValues == 2
+        newArray = randperm(nValues);
+    else
+        newArray = randpermNoConsecutive(nValues);
+    end
 else
 	works = false;
 
 	while ~works
-		newArray = randpermNoConsecutive(nValues);
+        if nValues == 2
+            newArray = randperm(nValues);
+        else
+            newArray = randpermNoConsecutive(nValues);
+        end
 
-		% If the values are far enough apart, you're good
-		if (oldArray(end) == newArray(1)) || (mod(oldArray(end) + newArray(1), 4) == 3)
-			works = false;
-		else
-			works = true;
-		end
+        if nValues > 2
+            % If the values are far enough apart, you're good
+            if (oldArray(end) == newArray(1)) || (mod(oldArray(end) + newArray(1), 4) == 3)
+                works = false;
+            else
+                works = true;
+            end
+        else
+            works = true;
+        end
 	end
 end
 
