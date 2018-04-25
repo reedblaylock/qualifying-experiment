@@ -49,23 +49,13 @@ showInstructions(state, text);
 %% Run everything
 nBlocks = numel(state.blockNames);
 runTrainingPhaseOne(state);
+runTrainingPhaseTwoB(state);
 for iBlock = 1:nBlocks
 	blockName = state.blockNames{blockOrder(iBlock)};
     
-	participantHasBeenTrained = 0;
-	nTrainingIterations = 0;
-    while ~participantHasBeenTrained
-% Run training phase
-		
-		runTrainingPhaseThree(state, blockName);
-		runTrainingPhaseFour(state, blockName);
-
-% Get input: are you comfortable with this?
-		nTrainingIterations = nTrainingIterations + 1;
-		participantHasBeenTrained = getParticipantConfidence(state);
-    end
-    
-    noteTrainingIterations(state, nTrainingIterations);
+    % Train
+    runTrainingPhaseThree(state, blockName);
+    runTrainingPhaseFour(state, blockName);
 
 % Run experiment phase
 	runExperimentPhase(state, blockName);
