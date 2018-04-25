@@ -48,8 +48,8 @@ showInstructions(state, text);
 
 %% Run everything
 nBlocks = numel(state.blockNames);
-runTrainingPhaseOne(state);
 runTrainingPhaseTwoB(state);
+runTrainingPhaseOne(state);
 for iBlock = 1:nBlocks
 	blockName = state.blockNames{blockOrder(iBlock)};
     
